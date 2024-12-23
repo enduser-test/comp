@@ -20,7 +20,7 @@ jobs:
         with:
           prevent: true
           allowed-hosts: >
-              registry.npmjs.org1
+              registry.npmjs.org
           fail-on-error: true
       - name: Use action
         uses: actions/checkout@v4
