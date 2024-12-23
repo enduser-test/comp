@@ -9,8 +9,6 @@ permissions:
   checks: write
   contents: read
   packages: read
-env:
-  API_URL: https://app.stage.veribom.com/
 
 jobs:
   start_proxy_and_build:
