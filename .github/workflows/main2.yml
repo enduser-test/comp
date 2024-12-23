@@ -14,7 +14,7 @@ jobs:
       options: --privileged
     steps:
       - name: Cimon by Cycode
-        uses: cycodelabs/cimon-action@v0
+        uses: cycodelabs/cimon-action@v0.9.4
         with:
           report-process-tree: true
           apply-fs-events: true
