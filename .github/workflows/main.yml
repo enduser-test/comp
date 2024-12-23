@@ -1,9 +1,9 @@
-name: Build MAVEN Package
+name: Build JS Package
 on:
   push:
-    branches: [ STAGE ]
+    branches: [ main ]
   pull_request:
-    branches: [ STAGE ]
+    branches: [ main ]
 
 permissions:
   checks: write
