@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Cimon by Cycode
         uses: CycodeLabs/cimon-action@v0.9.4
+        with:
+          report-process-tree: true
+          apply-fs-events: true
       - uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v4
