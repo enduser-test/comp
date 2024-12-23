@@ -1,7 +1,10 @@
 name: Build
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
@@ -10,9 +13,6 @@ jobs:
       image: ubuntu:22.04
       options: --privileged
     steps:
-      - name: Install dependencies
-        run: apt update && apt install -y curl wget jq
-
       - name: Run Cimon
         uses: CycodeLabs/cimon-action@v0.7.3
 
