@@ -8,15 +8,11 @@ on:
     
 jobs:
   build:
-    runs-on: ubuntu-22.04
-    container:
-      image: ubuntu:22.04
-      options: --privileged
-    steps:
-      - name: Install dependencies
-        run: apt update && apt install -y curl wget jq
-
-      - name: Run Cimon
-        uses: cycodelabs/cimon-action@v0.7.3
+    runs-on: ubuntu-latest
+     steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          fail-on-error: true
+          node-version: '20.x'
+      - run: npm ci
