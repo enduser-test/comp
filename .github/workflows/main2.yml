@@ -9,9 +9,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: ubuntu:22.04
+      options: --privileged
     steps:
       - name: Cimon by Cycode
         uses: CycodeLabs/cimon-action@v0.9.4
+
+        
         with:
           report-process-tree: true
           apply-fs-events: true
