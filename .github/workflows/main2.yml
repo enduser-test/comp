@@ -1,50 +1,22 @@
-            - name: Cimon by Cycode
-  # You may pin to the exact commit or the version.
-  # uses: CycodeLabs/cimon-action@a776840fdbb960586d0b6cb2671944bdbf6aeba1
-  uses: CycodeLabs/cimon-action@v0.7.3
-  with:
-    # Cimon client ID for authentication
-    client-id: # optional
-    # Cimon secret for authentication
-    secret: # optional
-    # Enable prevention mode
-    prevent: # default is false
-    # A comma-separated list of allowed IP addresses
-    allowed-ips: # optional
-    # A comma-separated list of domain names
-    allowed-hosts: # optional
-    # A comma or white space separated list of ignored IP networks in CIDR
-notation, e.g. 10.0.0.0/8, 172.16.0.0/12. This setting is mandatory if
-your workflow runs containers attached to a custom network with
-configured sub-range. In other words, inter-container networking is
-usually ignored by Cimon. Cimon implicitly ignores 10.0.0.0/8 and
-172.16.0.0/12 networks.
+name: Build
 
-    ignored-ip-nets: # optional
-    # GitHub token (used to overcome GitHub rate limiting)
-    github-token: # optional, default is ${{ github.token }}
-    # Report results through job summary output
-    report-job-summary: # optional, default is true
-    # Enable to report the process tree
-    report-process-tree: # optional, default is false
-    # Report logs through job artifact
-    report-artifact-log: # optional, default is true
-    # Slack webhook endpoint to report security events
-    slack-webhook-endpoint: # optional
-    # Enable processing filesystem events and display them in the process tree report
-    apply-fs-events: # optional, default is false
-    # Docker image reference
-    docker-image: # default is docker.io/cycodelabs/cimon:v0.7.3
-    # Skip pulling image from registry (Used for debugging)
-    docker-image-pull: # optional, default is false
-    # Username to pull image from registry (Used for debugging)
-    docker-username: # optional
-    # Password to pull image from registry (Used for debugging)
-    docker-password: # optional
-    # Log level (Used for debugging)
-    log-level: # optional, default is info
-    # Set of key=value pairs that describe Cimon features.
-    feature-gates: # optional
-    # Fail the CI if Cimon encountered an error
-    fail-on-error: # optional, default is false
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    container:
+      image: ubuntu:22.04
+      options: --privileged
+    steps:
+      - name: Install dependencies
+        run: apt update && apt install -y curl wget jq
+
+      - name: Run Cimon
+        uses: CycodeLabs/cimon-action@v0.7.3
+
+  
+
+  
           
