@@ -20,11 +20,10 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-    - uses: cycodelabs/cimon-action@v0
-      with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Checkout the code
-      uses: actions/checkout@v3
-    - run: npm install
+      - name: Cimon by Cycode
+        uses: CycodeLabs/cimon-action@v0.9.4 
+      - name: Checkout the code
+        uses: actions/checkout@v3
+      - run: npm install
 
         
