@@ -8,9 +8,9 @@ on:
     
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     container:
-      image: ubuntu:latest
+      image: ubuntu:22.04
       options: --privileged
     steps:
       - name: Cimon by Cycode
