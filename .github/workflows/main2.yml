@@ -1,11 +1,8 @@
 name: Build
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-    
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -15,17 +12,10 @@ jobs:
     steps:
       - name: Install dependencies
         run: apt update && apt install -y curl wget jq
-      - name: Cimon by Cycode
-        uses: cycodelabs/cimon-action@v0.9.4
-        with:
-          report-process-tree: true
-          apply-fs-events: true
-          fail-on-error: true
-          log-level: debug
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
-      - run: npm ci
-      
+
+      - name: Run Cimon
+        uses: cycodelabs/cimon-action@v0
+
+      - name: Run a network connection
+        run: |
+          curl google.com
